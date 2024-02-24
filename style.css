@@ -1,43 +1,58 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: monospace, Courier;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace, Courier;
 }
 
 .title-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    border-bottom: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-bottom: 3px solid black;
 }
 
 .title {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .game-table {
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-    height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  height: calc(100vh - 200px);
 }
 
 .guess-table {
-    height: 250px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    row-gap: 10px;
-    column-gap: 10px;
+  height: 250px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 10px;
+  column-gap: 10px;
 }
 
 .letter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border: 2px solid gray;
-    font-size: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: 2px solid gray;
+  font-size: 36px;
+}
+
+.correct {
+  background-color: green;
+  color: white;
+}
+
+.partially-correct {
+  background-color: darkgoldenrod;
+  color: white;
+}
+
+.incorrect {
+  background-color: gray;
+  color: white;
 }
