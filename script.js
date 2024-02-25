@@ -6,7 +6,8 @@ invalidMessage.textContent = "Invalid word! 🚫";
 const resultMessage = document.createElement("p");
 let currentLetter = 0;
 let currentRow = 0;
-
+let loading = false;
+setSpinner(loading);
 
 document.addEventListener("keydown", function (event) {
   if (isLetter(event.key)) {
@@ -32,17 +33,31 @@ const WORD_URL = "https://words.dev-apis.com/word-of-the-day";
 const VALID_URL = "https://words.dev-apis.com/validate-word";
 
 async function getWord() {
+  loading = true;
+  setSpinner(loading);
+
   const response = await fetch(WORD_URL);
   const data = await response.json();
+
+  loading = false;
+  setSpinner(loading);
+  
   return data.word;
 }
 
 async function validateWord(word) {
+  loading = true;
+  setSpinner(loading);
+
   const response = await fetch(VALID_URL, {
     method: "POST",
     body: JSON.stringify({ word: word }),
   });
   const data = await response.json();
+
+  loading = false;
+  setSpinner(loading);
+
   return data.validWord;
 }
 
@@ -118,9 +133,7 @@ function checkIfCorrect(word) {
       if (currentLetter === 30) {
         resultMessage.textContent = "Too bad! The word was " + data.toUpperCase() + ". 😔";
         resultBox.appendChild(resultMessage);
-      } //else {
-      //   alert("Incorrect!");
-      // }
+      }
     }
   });
 }
@@ -145,12 +158,11 @@ function isLetterInWord(letter, word) {
   return word.includes(letter);
 }
 
-function letterApparitions(letter, word) {
-  let count = 0;
-  for (let i = 0; i < word.length; i++) {
-    if (word[i] === letter) {
-      count++;
-    }
+function setSpinner(loading) {
+  const spinner = document.querySelector(".loading-spinner");
+  if (loading) {
+    spinner.style.display = "block";
+  } else {
+    spinner.style.display = "none";
   }
-  return count;
 }

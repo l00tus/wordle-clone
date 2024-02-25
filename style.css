@@ -64,6 +64,15 @@
   height: 50px;
 }
 
+.loading-spinner {
+  font-size: 58px;
+  animation: spinner 0.75s linear infinite; 
+}
+
+/* .hidden {
+  visibility: hidden;
+} */
+
 .info {
   display: flex;
   justify-content: center;
@@ -92,5 +101,11 @@
 
   100% {
     border-color: black;
+  }
+}
+
+@keyframes spinner {
+  to{
+    transform: rotate(360deg);
   }
 }
