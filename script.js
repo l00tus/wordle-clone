@@ -1,6 +1,9 @@
 const letters = document.querySelectorAll(".letter");
+const resultBox = document.querySelector(".result");
+const resultMessage = document.createElement("p");
 let currentLetter = 0;
 let currentRow = 0;
+
 
 document.addEventListener("keydown", function (event) {
   if (isLetter(event.key)) {
@@ -49,15 +52,19 @@ function checkIfValid() {
   validateWord(word).then(function (data) {
     if (data) {
       checkIfCorrect(word);
-      alert("Valid word!");
     } else {
       currentRow--;
-      for (let i = currentRow * 5; i < currentLetter; i++) {
-        letters[i].textContent = "";
-      }
-      currentLetter = currentRow * 5;
 
-      alert("Invalid word!");
+      for(let i = currentRow * 5; i < currentLetter; i++) {
+        letters[i].classList.add("invalid");
+      }
+
+      setTimeout(function() {
+        for (let i = currentRow * 5; i < currentLetter; i++) {
+          letters[i].textContent = "";
+        }
+        currentLetter = currentRow * 5;
+      }, 750);
     }
   });
 }
@@ -68,7 +75,8 @@ function checkIfCorrect(word) {
       for (let i = (currentRow - 1) * 5; i < currentRow * 5; i++) {
         paintGreen(i);
       }
-      alert("Correct!");
+      resultMessage.textContent = "Congratulations! You guessed the word!🎉";
+      resultBox.appendChild(resultMessage);
     } else {
       const letterMap = new Map();
       for (let i = 0; i < data.length; i++) {
@@ -101,7 +109,8 @@ function checkIfCorrect(word) {
         }
       }
       if (currentLetter === 30) {
-        alert("Incorrect!" + " The word was " + data.toUpperCase() + ".");
+        resultMessage.textContent = "Too bad! The word was " + data.toUpperCase() + ". 😔";
+        resultBox.appendChild(resultMessage);
       } else {
         alert("Incorrect!");
       }
