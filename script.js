@@ -1,5 +1,8 @@
 const letters = document.querySelectorAll(".letter");
 const resultBox = document.querySelector(".result");
+const informationBox = document.querySelector(".info");
+const invalidMessage = document.createElement("p");
+invalidMessage.textContent = "Invalid word! 🚫";
 const resultMessage = document.createElement("p");
 let currentLetter = 0;
 let currentRow = 0;
@@ -55,6 +58,8 @@ function checkIfValid() {
     } else {
       currentRow--;
 
+      informationBox.appendChild(invalidMessage);
+
       for(let i = currentRow * 5; i < currentLetter; i++) {
         letters[i].classList.add("invalid");
       }
@@ -64,6 +69,7 @@ function checkIfValid() {
           letters[i].textContent = "";
           letters[i].classList.remove("invalid");
         }
+        informationBox.removeChild(invalidMessage);
         currentLetter = currentRow * 5;
       }, 750);
     }
@@ -112,9 +118,9 @@ function checkIfCorrect(word) {
       if (currentLetter === 30) {
         resultMessage.textContent = "Too bad! The word was " + data.toUpperCase() + ". 😔";
         resultBox.appendChild(resultMessage);
-      } else {
-        alert("Incorrect!");
-      }
+      } //else {
+      //   alert("Incorrect!");
+      // }
     }
   });
 }
