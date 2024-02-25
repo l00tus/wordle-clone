@@ -62,6 +62,7 @@ function checkIfValid() {
       setTimeout(function() {
         for (let i = currentRow * 5; i < currentLetter; i++) {
           letters[i].textContent = "";
+          letters[i].classList.remove("invalid");
         }
         currentLetter = currentRow * 5;
       }, 750);
