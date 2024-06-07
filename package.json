@@ -1,0 +1,26 @@
+{
+  "name": "wordle-clone",
+  "version": "1.0.0",
+  "description": "A clone of the popular Wordle game",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/l00tus/wordle-clone.git"
+  },
+  "keywords": [
+    "wordle"
+  ],
+  "author": "l00tus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/l00tus/wordle-clone/issues"
+  },
+  "homepage": "https://github.com/l00tus/wordle-clone#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
