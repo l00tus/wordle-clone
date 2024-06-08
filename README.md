@@ -25,7 +25,7 @@ The letter is not in the word.
 Make sure you have these intalled:
 * Node.js
 
-Run these commands
+Clone this repository and run these commands
 ```[console]
 npm install
 npm start
