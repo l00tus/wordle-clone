@@ -22,7 +22,7 @@ The letter is not in the word.
 
 ## Running locally
 
-Make sure you have these intalled:
+Make sure you have these installed:
 * Node.js
 
 Clone this repository and run these commands
